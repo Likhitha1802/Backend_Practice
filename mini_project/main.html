@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="getData()">Get</button>
+
+		<ul id="username"></ul>
+</body>
+		
+		<script>
+
+				let url = 'https://jsonplaceholder.typicode.com/users';
+
+				function getData(){
+					//GET
+					fetch(url).then((res) => {return res.json()}).then((data)=>{
+						var element = document.getElementById('username');
+						for(let i = 0; i < data.length; i++)
+						element.innerHTML += "<li>" + (data[i].name) + " : " + data[i].email + "</li>";
+					});
+				}	
+		</script>
+
+
+</html>

@@ -1,0 +1,52 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="height:500px;width:500px;background-color:pink;">
+        <div style="height:300px;width:300px;background-color:blue;margin:5%;padding: 5%;"></div>
+    </div>
+</body>
+</html> -->
+
+const http = require('http');
+const express = require('express');
+const app = express();
+
+let userData = [
+    {
+        id: 101,
+        name: 'abc',
+        marks: 90
+    },
+    {
+        id: 102,
+        name: 'def',
+        marks: 82
+    },
+    {
+        id: 103,
+        name: 'ghi',
+        marks: 72
+    }
+];
+
+app.get('/data',function(req,res){
+    res.json(userData);
+});
+
+app.get('/login',function(req,res){
+    res.send('login page');
+});
+
+app.get('/signup',function(req,res){
+    res.send('signup');
+});
+
+app.listen(3000,function(){
+    console.log('server application has started on 3000');
+});

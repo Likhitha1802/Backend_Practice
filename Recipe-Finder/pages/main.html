@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <style>
+            h1{
+                color:brown;
+                text-align: center;
+            }    
+        </style>
+    </head>
+    <body>
+        <h1>Recipes</h1>
+        <center>
+            Enter the name of recipe:
+        <input id="name" type = text placeholder="eg:AttaHalwa" ><br><br>
+        <button id="btn" onclick="recipe()">Submit</button>
+        </center>
+        <p id="result"></p>
+        <p id="result1"></p>
+        <p id="result2"></p>
+    </body>
+    <script>
+        async function recipe(){
+            // alert("workinng");
+            var recipe_name = document.getElementById('name').value
+            if(recipe_name.length == 0){
+                alert("Enter recipe name")
+            }
+            else{
+                var data = JSON.stringify({name:recipe_name})
+                var response = await fetch('/postingdata', {method:'POST',headers : { 'content-type' : 'application/json' },body:data})
+                console.log(response.status)
+                if(response.status == 500){
+                    alert("Recipe not found.Enter another recipe")
+                }
+                else if(response.status == 200){
+                response.json().then(data => {document.getElementById('result').innerHTML = data.Name;
+                document.getElementById('result1').innerHTML = data.Ingredients;
+                document.getElementById('result2').innerHTML = data.Procedure;})
+                } 
+            }
+        }
+
+    </script>
+</html>

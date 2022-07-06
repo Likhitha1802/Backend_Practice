@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Registered Users</h1>
+    <div  id="info"></div>
+    <button type="button" onclick="fetchData()">get data</button>
+    <div class="container"></div>
+</body>
+<script>
+    function fetchData(){
+        var apikey="https://jsonplaceholder.typicode.com/users";
+
+fetch(apikey)
+.then(response => response.json())
+.then(json => {
+      console.log(json);
+});
+
+    }
+ 
+
+
+   
+</script>
+</html>
+<script>
+			
+    let userData = {
+        id: 101,
+        name: 'abc'
+    }
+
+    //"{"id":101,"name":"abc"}"
+
+    let url = 'https://randomuser.me/api/';
+
+    let option = {
+        method: 'POST',
+        headers:{
+            "content-type":"application/json"
+        },
+        body: JSON.stringify(userData)
+    }
+
+    function getData(){
+        //GET
+        fetch(url).then((res) => {return res.json()}).then((data)=>{
+            var element = document.getElementById('username');
+            element.innerHTML = (data.results[0].name.first + " " + data.results[0].name.last);
+        });
+    }
+
+    getData();
+</script>
+<button onclick="getData()">Get</button>
+
+		<h1 id="username"></h1>
+

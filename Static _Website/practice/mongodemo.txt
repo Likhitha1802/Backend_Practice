@@ -1,0 +1,12 @@
+collection of students
+{
+    "name":"K.Likhita",
+    "age":19,
+    "id":1001
+}
+collection of cities
+{
+    "id":1001
+    "city":"rajahmundry",
+    "state":"andhrapradesh",
+}
